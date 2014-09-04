@@ -8,9 +8,9 @@ title: Maximum Contiguous Subarray（最大连续字序列和）
 
 要补的这门课叫Design and Analysis of Algorithms. 之前本科的课因为学习的主要是Data Structures，所以不能抵学分，只好重修。
 
-
-    .  为了最大化发挥github的作用，每次的笔记并不追求完美才写出来，重要的是记录一些关键点，然后再根据自己的理解不断地更新；
-    .  根据老师对这门课的解释，并不追求coding级别的实现，更多地在对算法的设计与分析上，所以一开始也不要拘泥于代码实现，重点训练自己的分析问题，设计算法，分析算法的能力。
+	为了最大化发挥github的作用，每次的笔记并不追求完美才写出来，重要的是记录一些关键点，然后再根据自己的理解不断地更新；
+    
+	根据老师对这门课的解释，并不追求coding级别的实现，更多地在对算法的设计与分析上，所以一开始也不要拘泥于代码实现，重点训练自己的分析问题，设计算法，分析算法的能力。
 
 今天是第一堂课，老师主要介绍了这门课的内容，发现重修还是有用的，很多知识点本科都没有提到，这次系统地学习一下还是挺好的。之后以一道算法题来阐释了算法的美妙: **Maximum Contiguous Subarray（最大连续字串和）**。
 
@@ -21,7 +21,6 @@ title: Maximum Contiguous Subarray（最大连续字序列和）
 
 ####2.分治的方法
 分治的思路在于将问题拆成更小的子问题，利用递归解决，对于一个序列A[1, 2, ..., N]，将它一分为2， 那么最大子序列只可能有3中情况:
-
 
     . 左边的部分
     . 右边的部分
@@ -34,8 +33,6 @@ title: Maximum Contiguous Subarray（最大连续字序列和）
 
 1. 从前往后看，依次遍历数组中的每一个元素，并求和，一旦发现到第i个元素时和为负值，那么第i个元素一定不在要求解的子序列中，因为从1-i这部分的序列，去掉i的和肯定大于包含i的和。而如果从1-j(j>i)的子序列和，肯定小于i+1→j这个序列的和。基于这个思路，还是通过代码展示更容易说清楚:
 
-
-	
 <pre><code>
 public static int maxSubsequenceSum(int[] a) {
     int maxSum = 0, thisSum = 0;;
@@ -63,8 +60,6 @@ All[n-1] = max {End(n-2) + a[n-1], a[n-1], All(n-2)}
 由这道题得到的启发:
 通过这些问题的研究，我们可以注意以下几点算法设计思想：
 
-
-
     .保存状态，避免重复计算：动态规划的思想
     .将信息预处理到数据结构中（类似问题中），即“部分积”、“部分和”的
     .扫描算法。与数组相关的问题常可以考虑“如何将arr[0,...i]的问题转为求解arr[0,...i-1]的问题”
@@ -79,6 +74,9 @@ All[n-1] = max {End(n-2) + a[n-1], a[n-1], All(n-2)}
 	
 参考了几篇文章:
 
+1. [http://my.oschina.net/itblog/blog/267860][1]
 
-[xxx]: http://my.oschina.net/itblog/blog/267860 (特别赞)
-[xxxx]: http://www.ahathinking.com/archives/120.html (需要多看几遍)
+2. [http://www.ahathinking.com/archives/120.html][2]
+
+[1]: http://my.oschina.net/itblog/blog/267860
+[2]: http://www.ahathinking.com/archives/120.html
