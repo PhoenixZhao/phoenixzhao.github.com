@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Brume</title>
+    <link></link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
+    <description>It's simple. It's easy to use. It's a Jekyll theme.</description>
+    <language>en-us</language>
+    <pubDate>Sat, 06 Sep 2014 11:56:47 +0800</pubDate>
+    <lastBuildDate>Sat, 06 Sep 2014 11:56:47 +0800</lastBuildDate>
+
+    
+      <item>
+        <title>Maximum Contiguous Subarray（最大连续字序列和）</title>
+        <link>/Algorithms-notes</link>
+        <pubDate>Wed, 03 Sep 2014 00:00:00 +0800</pubDate>
+        <author>Aigars Dzerviniks</author>
+        <description>&lt;p&gt;需要重新上本科的课，决定开始记录一下上课笔记，将老师每堂课提到的问题都整理一下，一方面作课堂知识的温习，另一方面及时地整理归纳有利于知识点的掌握。&lt;/p&gt;
+
+&lt;p&gt;要补的这门课叫Design and Analysis of Algorithms. 之前本科的课因为学习的主要是Data Structures，所以不能抵学分，只好重修。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;1. 为了最大化发挥github的作用，每次的笔记并不追求完美才写出来，重要的是记录一些关键点，然后再根据自己的理解不断地更新；
+
+2. 根据老师对这门课的解释，并不追求coding级别的实现，更多地在对算法的设计与分析上，所以一开始也不要拘泥于代码实现，重点训练自己的分析问题，设计算法，分析算法的能力。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;今天是第一堂课，老师主要介绍了这门课的内容，发现重修还是有用的，很多知识点本科都没有提到，这次系统地学习一下还是挺好的。之后以一道算法题来阐释了算法的美妙: &lt;strong&gt;Maximum Contiguous Subarray（最大连续字串和）&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;用这道题作为第一堂课的内容，实在是再好不过了，因为每个人一上来就能想到一种非常直观的解法，那就是暴力遍历。但暴力的复杂度太大，经过适当地改进，能将算法复杂度由O(N^3)降低到O(N)，这实在是一件振奋人心地事情，让我们真切地感受到算法的魅力，进而提高学习兴趣。&lt;/p&gt;
+
+&lt;h4&gt;1.暴力解决&lt;/h4&gt;
+
+&lt;p&gt;既然是求最大子序列的和，只需要将所有的子序列都计算出来即可。这个方法比较直接，最粗糙的解法是O(N^3)复杂度，简单优化能到O(N^2)复杂度。&lt;/p&gt;
+
+&lt;h4&gt;2.分治的方法&lt;/h4&gt;
+
+&lt;p&gt;分治的思路在于将问题拆成更小的子问题，利用递归解决，对于一个序列A[1, 2, ..., N]，将它一分为2， 那么最大子序列只可能有3中情况:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;. 左边的部分
+. 右边的部分
+. 同时包含左右两部分
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;那么只需要比较这三个值，求出最大的即可。而利用递归算法，就能将算法复杂度降低到O(NlogN)。&lt;/p&gt;
+
+&lt;h4&gt;3.动态规划的方法&lt;/h4&gt;
+
+&lt;p&gt;动态规划的核心思想在于减少重复计算，保存状态与计算过的值。Google了一下这个问题的解法，有两种思路来用动态规划实现：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;从前往后看，依次遍历数组中的每一个元素，并求和，一旦发现到第i个元素时和为负值，那么第i个元素一定不在要求解的子序列中，因为从1-i这部分的序列，去掉i的和肯定大于包含i的和。而如果从1-j(j&amp;gt;i)的子序列和，肯定小于i+1→j这个序列的和。基于这个思路，还是通过代码展示更容易说清楚:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;
+public static int maxSubsequenceSum(int[] a) {
+    int maxSum = 0, thisSum = 0;;
+    for(int i=0; i&lt;a.length; i++) {
+        thisSum += a[i];
+        if(thisSum &gt; maxSum)
+            maxSum = thisSum;
+        else if(thisSum &lt; 0)
+            thisSum = 0;
+    }
+    return maxSum;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;从后往前看，记最后一个元素为a[n-1]，考虑最大子序列与a[n-1]关系:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;*  a[n-1]单独构成最大子序列；
+*  a[n-1]作为最大子序列的最右端的值；
+*  a[n-1]与最大子序列无关，即再a[0]--a[n-2]这个序列中
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;由此可以看出，最大子序列可以分为分成了三个子问题，那么最大子序列的和就是这3个的最大值；在这里记End(n-1)为以a[n-1]结尾的最大子序列的和；而记All(n-1)为a[0]-&amp;gt;a[n-1]范围里的最大子序列的和。则可以得到:
+All[n-1] = max {End(n-2) + a[n-1], a[n-1], All(n-2)}
+得到了这个状态方程，求解就容易了。&lt;/p&gt;
+
+&lt;p&gt;由这道题得到的启发:
+通过这些问题的研究，我们可以注意以下几点算法设计思想：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;.保存状态，避免重复计算：动态规划的思想
+.将信息预处理到数据结构中（类似问题中），即“部分积”、“部分和”的
+.扫描算法。与数组相关的问题常可以考虑“如何将arr[0,...i]的问题转为求解arr[0,...i-1]的问题”
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;另外，还有几个延伸:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;1. 如果是循环数组呢？
+2. 最大子序列的乘积最大；
+3. 最大子矩阵
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;参考了几篇文章:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://my.oschina.net/itblog/blog/267860&quot;&gt;http://my.oschina.net/itblog/blog/267860&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.ahathinking.com/archives/120.html&quot;&gt;http://www.ahathinking.com/archives/120.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+      </item>
+    
+      <item>
+        <title>finally, I make it!</title>
+        <link>/My-First-pages</link>
+        <pubDate>Mon, 01 Sep 2014 00:00:00 +0800</pubDate>
+        <author>Aigars Dzerviniks</author>
+        <description>&lt;h3&gt;This is my first posts in Github pages using Jekyll.&lt;/h3&gt;
+</description>
+      </item>
+    
+      <item>
+        <title>Demo post</title>
+        <link>/demo-post</link>
+        <pubDate>Fri, 07 Mar 2014 00:00:00 +0800</pubDate>
+        <author>Aigars Dzerviniks</author>
+        <description>&lt;p&gt;Praesent tincidunt vestibulum sem nec eleifend. Pellentesque adipiscing mollis adipiscing. Sed ipsum sem, eleifend eget dapibus in, tincidunt ut dolor. Curabitur gravida urna leo, eget auctor turpis feugiat non. Vivamus pharetra, lorem id ullamcorper rutrum, eros erat condimentum erat, ac dignissim lorem nisi nec nunc. Praesent tellus mi, volutpat quis nisl et, consectetur blandit nibh.&lt;/p&gt;
+
+&lt;p&gt;Nulla sit amet nulla non odio sodales mollis elementum sed sem. Aenean et laoreet enim. Curabitur vulputate, mi rutrum commodo condimentum, enim nunc feugiat magna, vel rutrum sapien ante nec ante. Donec nec nibh placerat, molestie felis ac, vulputate arcu. Donec condimentum pellentesque nibh vel tincidunt. Fusce sem ipsum, varius at laoreet vitae, accumsan sed nisl. Nunc eget viverra diam. Aliquam pulvinar, enim id commodo tincidunt, risus lectus pharetra lacus, et semper enim ligula ut mauris. Sed vitae sollicitudin ante. In sollicitudin placerat dui et sagittis.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas leo id tortor feugiat, sit amet cursus diam mollis. Nunc sit amet tellus est. Nunc lacus nisl, gravida ut aliquam vel, molestie eget odio. Nulla facilisi. Ut sed libero pharetra nunc volutpat hendrerit. Mauris eget mi adipiscing, congue tellus ut, scelerisque eros. Phasellus ullamcorper dictum tellus nec pretium.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Integer molestie orci ante, nec dictum metus aliquam ut. Donec id tristique enim. Quisque tellus est, dignissim ut justo ac, volutpat fringilla mi. Duis ultricies nec sapien vitae blandit. &lt;strong&gt;Suspendisse sed est mi&lt;/strong&gt;. Mauris varius sapien vel nulla accumsan, id tincidunt ipsum ultrices. Sed eget magna mauris. Etiam porttitor lacus ullamcorper lacus tincidunt aliquam. Sed feugiat congue fringilla. Nunc velit diam, vulputate sed metus vitae, iaculis tempor arcu. Proin consectetur a erat in dignissim.&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tables&lt;/th&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;Are&lt;/th&gt;
+&lt;th style=&quot;text-align: right&quot;&gt;Cool&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;col 3 is&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;right-aligned&lt;/td&gt;
+&lt;td style=&quot;text-align: right&quot;&gt;$1600&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;col 2 is&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;centered&lt;/td&gt;
+&lt;td style=&quot;text-align: right&quot;&gt;$12&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;zebra stripes&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;are neat&lt;/td&gt;
+&lt;td style=&quot;text-align: right&quot;&gt;$1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;Pellentesque adipiscing mollis adipiscing.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Nulla sit amet nulla non odio sodales mollis elementum sed sem.&lt;/li&gt;
+&lt;li&gt;Donec id tristique enim. Quisque tellus est, dignissim ut justo ac, volutpat fringilla mi.&lt;/li&gt;
+&lt;li&gt;Nam luctus erat dolor, non viverra nulla varius at.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Curabitur nec ullamcorper dui, blandit aliquet ipsum. Integer suscipit odio quis eros fermentum auctor. Sed tincidunt quam eleifend, egestas erat vulputate, tincidunt metus. Maecenas gravida sodales mi nec posuere. Cras vel nisi condimentum, hendrerit lacus sed, scelerisque ipsum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc convallis vestibulum erat, quis porta tellus. &lt;em&gt;In lorem erat, sollicitudin varius posuere id, molestie ac eros&lt;/em&gt;. Fusce luctus tellus vitae vulputate venenatis. Sed scelerisque bibendum interdum. Sed pretium commodo ultrices. Fusce luctus quam id porttitor vulputate. Integer ornare consectetur diam eget rutrum. Etiam eget sapien metus.&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Ornare&lt;/dt&gt;
+  &lt;dd&gt;Cras vel nisi condimentum, hendrerit lacus sed, scelerisque ipsum.&lt;/dd&gt;
+  &lt;dt&gt;Convallis&lt;/dt&gt;
+  &lt;dd&gt;In lorem erat, sollicitudin varius posuere id, molestie ac eros&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;Proin at libero id lorem fermentum elementum quis eget est.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Nam bibendum turpis massa, at accumsan justo fermentum ac.&lt;/li&gt;
+&lt;li&gt;Nulla non nulla ut ante condimentum mattis vel at lectus.&lt;/li&gt;
+&lt;li&gt;Etiam eget tortor tincidunt, iaculis ligula a, tristique massa. Fusce sed congue lorem, interdum sodales nisl.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Etiam consequat euismod ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla pellentesque ipsum vulputate, pellentesque nisl vitae, lacinia sem. Praesent auctor felis et odio ultrices, nec tempor elit lobortis. Etiam ornare massa non risus luctus, id iaculis lacus egestas. Pellentesque massa dolor, mattis id lobortis eget, tristique vitae est.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;Nam vulputate leo vitae libero vehicula, id tincidunt velit malesuada. In vel ornare nisi, id semper turpis. Vivamus erat elit, venenatis quis dui at, convallis suscipit sapien. Nunc in nisi scelerisque, aliquam mauris porttitor, facilisis ligula. Vestibulum cursus erat ac turpis bibendum, id pulvinar dolor dapibus. Proin vitae justo et velit imperdiet ultrices id id odio. Cras adipiscing ante vel mauris lobortis rutrum. Aenean eu felis est. In lacinia porttitor risus non sagittis.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Greeter&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;greet&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;john&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Greeter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Hello, World&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;john&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greet&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Sed imperdiet interdum ultrices. Phasellus iaculis porttitor lorem nec scelerisque. Suspendisse eros urna, adipiscing vel luctus at, feugiat sit amet arcu. Aliquam porttitor ut urna pellentesque sagittis. Donec pellentesque venenatis diam sit amet cursus. Etiam luctus, metus quis gravida fermentum, tortor arcu consequat metus, eget viverra augue risus ac dui. Fusce faucibus scelerisque quam eu sagittis. Sed sit amet sapien non augue lobortis adipiscing. Sed sagittis at lectus eu tempus. Nulla non nulla ut ante condimentum mattis vel at lectus. Nulla ultricies dui et urna semper ultrices. Sed neque ante, dictum in dignissim luctus, facilisis ornare odio. Aenean tempor ultrices magna non pharetra. Curabitur vulputate nec est aliquet suscipit. Etiam ipsum sapien, dictum quis tristique vel, pretium at elit.&lt;/p&gt;
+</description>
+      </item>
+    
+
+  </channel>
+</rss>
