@@ -2,6 +2,8 @@
  
 This is the structure and content of my personal blog, powered by [Jekyll][1]. 
 
+The theme of my blog is forked from [http://jekyllthemes.org/themes/brume/](http://jekyllthemes.org/themes/brume/)
+
 ##This is my blog 
 [http://phoenixzhao.github.io/](http://phoenixzhao.github.io/)
 
