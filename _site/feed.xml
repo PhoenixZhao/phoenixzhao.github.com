@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Phoenix</title>
-    <link></link>
-    <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
+    <link>/</link>
+    <atom:link href="//feed.xml" rel="self" type="application/rss+xml" />
     <description>The jekyll them is forked from https://github.com/barryclark/jekyll-now</description>
     <language>en-us</language>
-    <pubDate>Sat, 06 Sep 2014 15:55:17 +0800</pubDate>
-    <lastBuildDate>Sat, 06 Sep 2014 15:55:17 +0800</lastBuildDate>
+    <pubDate>Sat, 06 Sep 2014 16:51:48 +0800</pubDate>
+    <lastBuildDate>Sat, 06 Sep 2014 16:51:48 +0800</lastBuildDate>
 
     
       <item>
         <title>Maximum Contiguous Subarray（最大连续字序列和）</title>
-        <link>/Algorithms-notes</link>
+        <link>//Algorithms-notes</link>
         <pubDate>Wed, 03 Sep 2014 00:00:00 +0800</pubDate>
         <author>Zhao Huan</author>
         <description>&lt;p&gt;需要重新上本科的课，决定开始记录一下上课笔记，将老师每堂课提到的问题都整理一下，一方面作课堂知识的温习，另一方面及时地整理归纳有利于知识点的掌握。&lt;/p&gt;
@@ -94,7 +94,7 @@ All[n-1] = max {End(n-2) + a[n-1], a[n-1], All(n-2)}
     
       <item>
         <title>finally, I make it!</title>
-        <link>/My-First-pages</link>
+        <link>//My-First-pages</link>
         <pubDate>Mon, 01 Sep 2014 00:00:00 +0800</pubDate>
         <author>Zhao Huan</author>
         <description>&lt;h3&gt;This is my first posts in Github pages using Jekyll.&lt;/h3&gt;
@@ -103,7 +103,7 @@ All[n-1] = max {End(n-2) + a[n-1], a[n-1], All(n-2)}
     
       <item>
         <title>Demo post</title>
-        <link>/demo-post</link>
+        <link>//demo-post</link>
         <pubDate>Fri, 07 Mar 2014 00:00:00 +0800</pubDate>
         <author>Zhao Huan</author>
         <description>&lt;p&gt;Praesent tincidunt vestibulum sem nec eleifend. Pellentesque adipiscing mollis adipiscing. Sed ipsum sem, eleifend eget dapibus in, tincidunt ut dolor. Curabitur gravida urna leo, eget auctor turpis feugiat non. Vivamus pharetra, lorem id ullamcorper rutrum, eros erat condimentum erat, ac dignissim lorem nisi nec nunc. Praesent tellus mi, volutpat quis nisl et, consectetur blandit nibh.&lt;/p&gt;
