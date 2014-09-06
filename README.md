@@ -1,120 +1,42 @@
-# Jekyll Now
+# brume
 
-**Jekyll** is a static site generator that's perfect for GitHub hosted blogs ([Jekyll Repository](https://github.com/jekyll/jekyll))
+I am not a designer so I cannot impress you with breathtaking Jekyll themes, but brume is something that just came to my mind and I had to build it. It is a clean and simple theme, which has an index page that lists all your blog posts divided by year and an about page. brume uses redcarpet as the Markdown processor with strikethrough extension enabled by default (so you can use ~~ to strike out words).
 
-**Jekyll Now** makes it easier to create your Jekyll blog, by eliminating a lot of the up front setup.
+This is how the "Home" page looks like.
 
-- You don't need to touch the command line
-- You don't need to install/configure ruby, rvm/rbenv, ruby gems :relaxed:
-- You don't need to install runtime dependancies like markdown processors, Pygments, etc
-- If you're on Windows, this will make setting up Jekyll a lot easier
-- It's easy to try out, you can just delete your forked repository if you don't like it
+![Home](https://dl.dropboxusercontent.com/u/9924988/Screen%20Shot%202014-02-26%20at%2018.48.57.png)
 
-In a few minutes you'll be set up with a minimal, responsive blog like the one below giving you more time to spend on writing epic blog posts!
+And this is a single post.
 
-![Jekyll Now Theme Screenshot](/images/jekyll-now-theme-screenshot.jpg "Jekyll Now Theme Screenshot")
+![Home](https://dl.dropboxusercontent.com/u/9924988/Screen%20Shot%202014-04-06%20at%2012.56.08.png)
 
-## Quick Start
+## Usage
 
-### Step 1) Fork Jekyll Now to your User Repository
+**Important:** The latest version of brume uses `site.baseurl` for links, therefore, if you want to put your site in a subdirectory, update the *_config.yml* file!
 
-Fork this repo, then rename the repository to yourgithubusername.github.io.
+- Download the ZIP file and extract it's contents.
+- Open *_config.yml* file and enter your site's URL and add additional configuration or update the existing one if needed.
+- Open *_data/brume.yml* file and fill in values for site name (site title), author (your name) and description (blog description). This file contains all the custom information about your page. You can access it using `site.data.brume` object.
+- Open *about/index.md* file and add information about you or your site. You can delete this file and directory if not needed.
+- Open *_data/links.yml* and add additional links or update the existing ones that you want to be displayed in the navigation menu.
+- If you don't want to use CC BY-NC 4.0 licence for the content, then you should change the footer text, which is located in *_layouts/default.html*.
+- Generate your site and be happy!
 
-Your Jekyll blog will often be viewable immediately at <http://yourgithubusername.github.io> (if it's not, you can force it to build by completing step 2)
+### Jekyll < 2.0.0
 
-![Step 1](/images/step1.gif "Step 1")
+I try to keep brume up to date with the newest Jekyll version. Jekyll 2.0.0 introduced a lot of changes (like a built in Sass support) that are not backward compatible, therefore I have created a separate branch `legacy` for those, who might be using an older Jekyll version. All the changes that I introduce in `master` will be ported to `legacy`.
 
-### Step 2) Customize and view your site
+## Theme customization
 
-Enter your site name, description, avatar and many other options by editing the _config.yml file. You can easily turn on Google Analytics tracking, Disqus commenting and social icons here too.
+This theme has 4 predefined colors that can be used for links:
 
-Making a change to _config.yml (or any file in your repository) will force GitHub Pages to rebuild your site with jekyll. Your rebuilt site will be viewable a few seconds later at <http://yourgithubusername.github.io>
+- azul
+- ruby
+- amber
+- avocado
 
-> There are 3 different ways that you can make changes to your blog's files:
+![Color Examples](https://dl.dropboxusercontent.com/u/9924988/colors_new.png)
 
-> 1. Edit files within your new username.github.io repository in the browser at GitHub.com (shown below).
-> 2. Use a third party GitHub content editor, like [Prose by Development Seed](http://prose.io). It's optimized for use with Jekyll making markdown editing, writing drafts, and uploading images really easy.
-> 3. Clone down your repository and make updates locally, then push them to your GitHub repository.
+By default it uses *azure*, but if you want to select another one just change the second class of `container` div in *_layouts/default.html* to one of the provided names.
 
-![_config.yml](/images/config.png "_config.yml")
-  
-### Step 3) Publish your first blog post
-
-Edit `/_posts/2014-3-3-Hello-World.md` to publish your first blog post. This [Markdown Cheatsheet](http://www.jekyllnow.com/Markdown-Style-Guide/) might come in handy.
-
-![First Post](/images/first-post.png "First Post")
-
-> You can add additional posts in the browser on GitHub.com too! Just hit the + icon in `/_posts/` to create new content. Just make sure to include the [front-matter](http://jekyllrb.com/docs/frontmatter/) block at the top of each new blog post and make sure the post's filename is in this format: year-month-day-title.md
-
-## Local Development
-
-1. Clone down your fork `git clone git@github.com:yourusername/yourusername.github.io.git`
-2. Install Jekyll `gem install jekyll`
-3. Install plug-ins that we use `gem install jemoji jekyll-sitemap`
-4. Serve the site and watch for markup/sass changes `jekyll serve --watch`
-5. View your website at http://0.0.0.0:4000
-6. Commit any changes and push everything to the master branch of your GitHub user repository. GitHub Pages will then rebuild and serve your website.
-
-## Moar!
-
-I've created a more detailed walkthrough, [**Build A Blog With Jekyll And GitHub Pages**](http://www.smashingmagazine.com/2014/08/01/build-blog-jekyll-github-pages/) over at the Smashing Magazine website. Check it out if you'd like a more detailed walkthrough and some background on Jekyll. :metal:
-
-It covers:
-
-- A more detailed walkthrough of setting up your Jekyll blog
-- Common issues that you might encounter while using Jekyll
-- Importing from Wordpress, using your own domain name, and blogging in your favorite editor
-- Theming in Jekyll, with Liquid templating examples
-- A quick look at Jekyll 2.0’s new features, including Sass/Coffeescript support and Collections
-
-## Jekyll Now Features
-
-✓ Command-line free _fork-first workflow_, using GitHub.com to create, customize and post to your blog  
-✓ Fully responsive and mobile optimized base theme (**[Theme Demo](http://jekyllnow.com)**)  
-✓ Sass/Coffeescript support using Jekyll 2.0  
-✓ Free hosting on your GitHub Pages user site  
-✓ Markdown blogging  
-✓ Syntax highlighting  
-✓ Disqus commenting  
-✓ Google Analytics integration  
-✓ SVG social icons for your footer  
-✓ 3 http requests, including your avatar  
-✓ Emoji in blog posts! :sparkling_heart: :sparkling_heart: :sparkling_heart:  
-
-✘ No installing dependancies  
-✘ No need to set up local development  
-✘ No configuring plugins  
-✘ No need to spend time on theming  
-✘ More time to code other things ... wait ✓!  
-
-## Questions?
-
-[Open an Issue](https://github.com/barryclark/jekyll-now/issues/new) and let's chat!
-
-## Get my new themes
-
-If you'd like me to let you know when I release a new theme, just [drop me your email for updates](http://eepurl.com/XUZpT). I'm currently working on a hacker portfolio site theme.
-
-## Other forkable themes
-
-You can use the [Quick Start](https://github.com/barryclark/jekyll-now#quick-start) workflow with other themes that are set up to be forked too! Here are some of  my favorites:
-
-- [Hyde](https://github.com/poole/hyde) by MDO
-- [Lanyon](https://github.com/poole/lanyon) by MDO
-- [mojombo.github.io](https://github.com/mojombo/mojombo.github.io) by Tom Preston-Werner
-- [Left](https://github.com/holman/left) by Zach Holman
-- [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) by Michael Rose
-- [Skinny Bones](https://github.com/mmistakes/skinny-bones-jekyll) by Michael Rose
-
-## Credits
-
-- [Jekyll](https://github.com/jekyll/jekyll) - Thanks to it's creators, contributors and maintainers.
-- [SVG icons](https://github.com/neilorangepeel/Free-Social-Icons) - Thanks, Neil Orange Peel. They're beautiful. 
-- [Solarized Light Pygments](https://gist.github.com/edwardhotchkiss/2005058) - Thanks, Edward.
-- [Joel Glovier](http://joelglovier.com/writing/) - Great Jekyll articles. I used Joel's feed.xml in this repository.
-- [David Furnes](https://github.com/dfurnes), [Jon Uy](https://github.com/jonuy), [Luke Patton](https://github.com/lkpttn) - Thanks for the design/code reviews.
-- [Bart Kiers](https://github.com/bkiers), [Javier Cejudo](https://github.com/javiercejudo) - Thanks for your [fantastic contributions](https://github.com/barryclark/jekyll-now/commits/master) to the project!
-
-## Get Hired as a Web Developer
-
-Check out my [free web development career newsletter](http://www.barryclark.co/newsletter) if you're interested in improving your chances of landing the job you want.
+Express your thoughts about brume on Twitter [@aigarsdz](http://twitter.com/aigarsdz), and help me make it better!
