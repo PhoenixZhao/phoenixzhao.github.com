@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Brume</title>
+    <title>Phoenix</title>
     <link></link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <description>It's simple. It's easy to use. It's a Jekyll theme.</description>
+    <description>The jekyll them is forked from https://github.com/barryclark/jekyll-now</description>
     <language>en-us</language>
-    <pubDate>Sat, 06 Sep 2014 11:56:47 +0800</pubDate>
-    <lastBuildDate>Sat, 06 Sep 2014 11:56:47 +0800</lastBuildDate>
+    <pubDate>Sat, 06 Sep 2014 15:55:17 +0800</pubDate>
+    <lastBuildDate>Sat, 06 Sep 2014 15:55:17 +0800</lastBuildDate>
 
     
       <item>
         <title>Maximum Contiguous Subarray（最大连续字序列和）</title>
         <link>/Algorithms-notes</link>
         <pubDate>Wed, 03 Sep 2014 00:00:00 +0800</pubDate>
-        <author>Aigars Dzerviniks</author>
+        <author>Zhao Huan</author>
         <description>&lt;p&gt;需要重新上本科的课，决定开始记录一下上课笔记，将老师每堂课提到的问题都整理一下，一方面作课堂知识的温习，另一方面及时地整理归纳有利于知识点的掌握。&lt;/p&gt;
 
 &lt;p&gt;要补的这门课叫Design and Analysis of Algorithms. 之前本科的课因为学习的主要是Data Structures，所以不能抵学分，只好重修。&lt;/p&gt;
@@ -96,7 +96,7 @@ All[n-1] = max {End(n-2) + a[n-1], a[n-1], All(n-2)}
         <title>finally, I make it!</title>
         <link>/My-First-pages</link>
         <pubDate>Mon, 01 Sep 2014 00:00:00 +0800</pubDate>
-        <author>Aigars Dzerviniks</author>
+        <author>Zhao Huan</author>
         <description>&lt;h3&gt;This is my first posts in Github pages using Jekyll.&lt;/h3&gt;
 </description>
       </item>
@@ -105,7 +105,7 @@ All[n-1] = max {End(n-2) + a[n-1], a[n-1], All(n-2)}
         <title>Demo post</title>
         <link>/demo-post</link>
         <pubDate>Fri, 07 Mar 2014 00:00:00 +0800</pubDate>
-        <author>Aigars Dzerviniks</author>
+        <author>Zhao Huan</author>
         <description>&lt;p&gt;Praesent tincidunt vestibulum sem nec eleifend. Pellentesque adipiscing mollis adipiscing. Sed ipsum sem, eleifend eget dapibus in, tincidunt ut dolor. Curabitur gravida urna leo, eget auctor turpis feugiat non. Vivamus pharetra, lorem id ullamcorper rutrum, eros erat condimentum erat, ac dignissim lorem nisi nec nunc. Praesent tellus mi, volutpat quis nisl et, consectetur blandit nibh.&lt;/p&gt;
 
 &lt;p&gt;Nulla sit amet nulla non odio sodales mollis elementum sed sem. Aenean et laoreet enim. Curabitur vulputate, mi rutrum commodo condimentum, enim nunc feugiat magna, vel rutrum sapien ante nec ante. Donec nec nibh placerat, molestie felis ac, vulputate arcu. Donec condimentum pellentesque nibh vel tincidunt. Fusce sem ipsum, varius at laoreet vitae, accumsan sed nisl. Nunc eget viverra diam. Aliquam pulvinar, enim id commodo tincidunt, risus lectus pharetra lacus, et semper enim ligula ut mauris. Sed vitae sollicitudin ante. In sollicitudin placerat dui et sagittis.&lt;/p&gt;
