@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Maximum Contiguous Subarray（最大连续字序列和）
+title: Maximum Contiguous Subarray（最大连续子序列和）
 ---
 
 
