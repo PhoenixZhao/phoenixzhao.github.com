@@ -3,6 +3,4 @@ layout: page
 title: About
 ---
 
-I am a PhD candidate in HKUST. I hope I can write and summary what I learn and think in my upcoming research life.
-
-
+I am a graduate student in HKUST.This is the place where I write I study and think. 
